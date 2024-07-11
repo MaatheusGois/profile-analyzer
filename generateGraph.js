@@ -1,7 +1,7 @@
 
-function generateGraph(json) {
+function generateGraph(json, width) {
 
-    var diameter = window.innerWidth,
+    var diameter = width,
         radius = diameter / 2,
         innerRadius = radius - 120;
 
