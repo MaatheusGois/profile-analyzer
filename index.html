@@ -6,100 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Podfile.lock Dependency Tree</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="src/css/main.css">
 </head>
-
-<style>
-  .toggle-checkbox {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-
-  .toggle-slot {
-    position: relative;
-    height: 3.2em;
-    width: 6.2em;
-    border: 0.5px solid #e4e7ec;
-    border-radius: 5.4em;
-    background-color: white;
-    box-shadow: 0px 1px 2.5px #e4e7ec;
-    transition: background-color 250ms;
-  }
-
-  .toggle-checkbox:checked~.toggle-slot {
-    background-color: #374151;
-  }
-
-  .toggle-button {
-    transform: translate(3.55em, 0.55em);
-    position: absolute;
-    height: 1.95em;
-    width: 1.95em;
-    border-radius: 50%;
-    background-color: #ffeccf;
-    box-shadow: inset 0px 0px 0px 0.2em #ffbb52;
-    transition: background-color 250ms, border-color 250ms, transform 500ms cubic-bezier(.26, 2, .46, .71);
-  }
-
-  .toggle-checkbox:checked~.toggle-slot .toggle-button {
-    background-color: #485367;
-    box-shadow: inset 0px 0px 0px 0.2em white;
-    transform: translate(0.45em, 0.45em);
-  }
-
-  .sun-icon {
-    position: absolute;
-    height: 1.8em;
-    width: 1.8em;
-    color: #ffbb52;
-  }
-
-  .sun-icon-wrapper {
-    position: absolute;
-    height: 1.8em;
-    width: 1.8em;
-    opacity: 1;
-    transform: translate(0.6em, 0.6em) rotate(15deg);
-    transform-origin: 50% 50%;
-    transition: opacity 150ms, transform 500ms cubic-bezier(.26, 2, .46, .71);
-  }
-
-  .toggle-checkbox:checked~.toggle-slot .sun-icon-wrapper {
-    opacity: 0;
-    transform: translate(0.9em, 0.6em) rotate(0deg);
-  }
-
-  .moon-icon {
-    position: absolute;
-    height: 1.8em;
-    width: 1.8em;
-    color: white;
-  }
-
-  .moon-icon-wrapper {
-    position: absolute;
-    height: 1.8em;
-    width: 1.8em;
-    opacity: 0;
-    transform: translate(3.05em, 0.6em) rotate(0deg);
-    transform-origin: 50% -50%;
-    transition: opacity 150ms, transform 500ms cubic-bezier(.26, 2.5, .46, .71);
-  }
-
-  .toggle-checkbox:checked~.toggle-slot .moon-icon-wrapper {
-    opacity: 1;
-    transform: translate(3.05em, 0.6em) rotate(-15deg);
-  }
-
-  .toggle-checkbox:checked+.toggle-label:before {
-    transform: translateX(26px);
-  }
-
-  */
-</style>
 
 <body>
   <div class="container mt-5">
@@ -158,8 +66,11 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
-  <script src="parsePodfile.js"></script>
-  <script src="generateGraph.js"></script>
+
+  <script src="src/js/parsePodfile.js"></script>
+  <script src="src/js/generateGraph.js"></script>
+  <script src="src/js/darkmode.js"></script>
+  <script src="src/js/exportJson.js"></script>
 
   <script>
     document.getElementById('submitBtn').addEventListener('click', function () {
@@ -171,24 +82,7 @@
 
       graphContainer = document.getElementById('graphContainer');
       graphContainer.style.display = 'block';
-    });
-
-    function exportJson() {
-      var podfileContent = document.getElementById('podfileInput').value;
-      var jsons = parsePodfile(podfileContent);
-      var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsons));
-      var downloadAnchorNode = document.createElement('a');
-      downloadAnchorNode.setAttribute("href", dataStr);
-      downloadAnchorNode.setAttribute("download", "podfile.json");
-      document.body.appendChild(downloadAnchorNode);
-      downloadAnchorNode.click();
-      downloadAnchorNode.remove();
-    }
-
-    document.getElementById('toggleDarkMode').addEventListener('change', function () {
-      document.body.classList.toggle('dark-mode');
-      document.getElementById('podfileInput').classList.toggle('dark-mode');
-    });
+    });    
   </script>
 </body>
 

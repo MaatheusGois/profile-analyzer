@@ -1,0 +1,197 @@
+.node {
+    font: 300 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    fill: #bbb;
+}
+
+.node:hover {
+    fill: #000;
+}
+
+.link {
+    stroke: rgb(58, 58, 58);
+    stroke-opacity: 0.4;
+    fill: none;
+    pointer-events: none;
+}
+
+.node:hover,
+.node--source,
+.node--target {
+    font-weight: 700;
+}
+
+/* Import */
+.link--source {
+    stroke: #e9c837;
+}
+
+.node--target {
+    fill: #e9c837;
+}
+
+/* Imported by */
+.link--target {
+    stroke: #7e26d0;
+}
+
+.node--source {
+    fill: #7e26d0;
+}
+
+/* Imported by */
+.dark-mode .link--target {
+    stroke: #7e26d0;
+}
+
+.dark-mode .node--source {
+    fill: #7e26d0;
+}
+
+.link--source,
+.link--target {
+    stroke-opacity: 1;
+    stroke-width: 2px;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .node {
+    fill: #e0e0e0;
+}
+
+.dark-mode .link {
+    stroke: lightblue;
+}
+
+/* Import */
+.dark-mode .link--source {
+    stroke: #e9c837;
+}
+
+.dark-mode .node--target {
+    fill: #e9c837;
+}
+
+/* Imported by */
+.dark-mode .link--target {
+    stroke: #7e26d0;
+}
+
+.dark-mode .node--source {
+    fill: #7e26d0;
+}
+
+.dark-mode .btn-primary {
+    background-color: #bb86fc;
+    border-color: #bb86fc;
+}
+
+.dark-mode .btn-secondary {
+    background-color: #03dac6;
+    border-color: #03dac6;
+}
+
+textarea.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+textarea.dark-mode:focus {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+textarea {
+    border: 0.1px solid #ced4da;
+}
+
+.toggle-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.toggle-slot {
+    position: relative;
+    height: 3.2em;
+    width: 6.2em;
+    border: 0.5px solid #e4e7ec;
+    border-radius: 5.4em;
+    background-color: white;
+    box-shadow: 0px 1px 2.5px #e4e7ec;
+    transition: background-color 250ms;
+}
+
+.toggle-checkbox:checked~.toggle-slot {
+    background-color: #374151;
+}
+
+.toggle-button {
+    transform: translate(3.55em, 0.55em);
+    position: absolute;
+    height: 1.95em;
+    width: 1.95em;
+    border-radius: 50%;
+    background-color: #ffeccf;
+    box-shadow: inset 0px 0px 0px 0.2em #ffbb52;
+    transition: background-color 250ms, border-color 250ms, transform 500ms cubic-bezier(.26, 2, .46, .71);
+}
+
+.toggle-checkbox:checked~.toggle-slot .toggle-button {
+    background-color: #485367;
+    box-shadow: inset 0px 0px 0px 0.2em white;
+    transform: translate(0.45em, 0.45em);
+}
+
+.sun-icon {
+    position: absolute;
+    height: 1.8em;
+    width: 1.8em;
+    color: #ffbb52;
+}
+
+.sun-icon-wrapper {
+    position: absolute;
+    height: 1.8em;
+    width: 1.8em;
+    opacity: 1;
+    transform: translate(0.6em, 0.6em) rotate(15deg);
+    transform-origin: 50% 50%;
+    transition: opacity 150ms, transform 500ms cubic-bezier(.26, 2, .46, .71);
+}
+
+.toggle-checkbox:checked~.toggle-slot .sun-icon-wrapper {
+    opacity: 0;
+    transform: translate(0.9em, 0.6em) rotate(0deg);
+}
+
+.moon-icon {
+    position: absolute;
+    height: 1.8em;
+    width: 1.8em;
+    color: white;
+}
+
+.moon-icon-wrapper {
+    position: absolute;
+    height: 1.8em;
+    width: 1.8em;
+    opacity: 0;
+    transform: translate(3.05em, 0.6em) rotate(0deg);
+    transform-origin: 50% -50%;
+    transition: opacity 150ms, transform 500ms cubic-bezier(.26, 2.5, .46, .71);
+}
+
+.toggle-checkbox:checked~.toggle-slot .moon-icon-wrapper {
+    opacity: 1;
+    transform: translate(3.05em, 0.6em) rotate(-15deg);
+}
+
+.toggle-checkbox:checked+.toggle-label:before {
+    transform: translateX(26px);
+}
