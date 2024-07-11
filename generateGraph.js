@@ -114,5 +114,4 @@ function generateGraph(json, width) {
 
         return imports;
     }
-
 }

@@ -2,43 +2,108 @@
     font: 300 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
     fill: #bbb;
   }
-  
+
   .node:hover {
     fill: #000;
   }
-  
+
   .link {
-    stroke: steelblue;
+    stroke: rgb(58, 58, 58);
     stroke-opacity: 0.4;
     fill: none;
     pointer-events: none;
   }
-  
+
   .node:hover,
   .node--source,
   .node--target {
     font-weight: 700;
   }
-  
-  .node--source {
-    fill: #2ca02c;
+
+  /* Import */
+  .link--source {
+    stroke: #e9c837;
   }
-  
+
   .node--target {
-    fill: #d62728;
+    fill: #e9c837;
   }
-  
+
+  /* Imported by */
+  .link--target {
+    stroke: #7e26d0;
+  }
+
+  .node--source {
+    fill: #7e26d0;
+  }
+
+  /* Imported by */
+  .dark-mode .link--target {
+    stroke: #7e26d0;
+  }
+
+  .dark-mode .node--source {
+    fill: #7e26d0;
+  }
+
   .link--source,
   .link--target {
     stroke-opacity: 1;
     stroke-width: 2px;
   }
-  
-  .link--source {
-    stroke: #d62728;
+
+  body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
   }
-  
-  .link--target {
-    stroke: #2ca02c;
+
+  .dark-mode .node {
+    fill: #e0e0e0;
   }
-  
+
+  .dark-mode .link {
+    stroke: lightblue;
+  }
+
+  /* Import */
+  .dark-mode .link--source {
+    stroke: #e9c837;
+  }
+
+  .dark-mode .node--target {
+    fill: #e9c837;
+  }
+
+  /* Imported by */
+  .dark-mode .link--target {
+    stroke: #7e26d0;
+  }
+
+  .dark-mode .node--source {
+    fill: #7e26d0;
+  }
+
+  .dark-mode .btn-primary {
+    background-color: #bb86fc;
+    border-color: #bb86fc;
+  }
+
+  .dark-mode .btn-secondary {
+    background-color: #03dac6;
+    border-color: #03dac6;
+  }
+
+  textarea.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  textarea.dark-mode:focus {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  textarea {
+    border: 0.1px solid #ced4da;
+  }

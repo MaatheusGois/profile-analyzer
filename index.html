@@ -6,63 +6,149 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Podfile.lock Dependency Tree</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
 </head>
 
 <style>
-  .node {
-    font: 300 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    fill: #bbb;
+  .toggle-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
   }
 
-  .node:hover {
-    fill: #000;
+  .toggle-slot {
+    position: relative;
+    height: 3.2em;
+    /* Altura ajustada para 3em */
+    width: 6.2em;
+    /* Largura ajustada proporcionalmente */
+    border: 0.5px solid #e4e7ec;
+    /* Ajustado proporcionalmente */
+    border-radius: 5.4em;
+    /* Ajustado proporcionalmente */
+    background-color: white;
+    box-shadow: 0px 1px 2.5px #e4e7ec;
+    /* Ajustado proporcionalmente */
+    transition: background-color 250ms;
   }
 
-  .link {
-    stroke: steelblue;
-    stroke-opacity: 0.4;
-    fill: none;
-    pointer-events: none;
+  .toggle-checkbox:checked~.toggle-slot {
+    background-color: #374151;
   }
 
-  .node:hover,
-  .node--source,
-  .node--target {
-    font-weight: 700;
+  .toggle-button {
+    transform: translate(3.55em, 0.55em);
+    /* Ajustado proporcionalmente */
+    position: absolute;
+    height: 1.95em;
+    /* Altura ajustada para 40% de 3em */
+    width: 1.95em;
+    /* Largura ajustada para 40% de 3em */
+    border-radius: 50%;
+    /* Ajustado proporcionalmente */
+    background-color: #ffeccf;
+    box-shadow: inset 0px 0px 0px 0.2em #ffbb52;
+    /* Ajustado proporcionalmente */
+    transition: background-color 250ms, border-color 250ms, transform 500ms cubic-bezier(.26, 2, .46, .71);
   }
 
-  /* Import */
-  .link--source {
-    stroke: #e9c837;
+  .toggle-checkbox:checked~.toggle-slot .toggle-button {
+    background-color: #485367;
+    box-shadow: inset 0px 0px 0px 0.2em white;
+    /* Ajustado proporcionalmente */
+    transform: translate(0.45em, 0.45em);
+    /* Ajustado proporcionalmente */
   }
 
-  .node--target {
-    fill: #e9c837;
+  .sun-icon {
+    position: absolute;
+    height: 1.8em;
+    /* Altura ajustada para 60% de 3em */
+    width: 1.8em;
+    /* Largura ajustada para 60% de 3em */
+    color: #ffbb52;
   }
 
-  /* Imported by */
-  .link--target {
-    stroke: #7e26d0;
+  .sun-icon-wrapper {
+    position: absolute;
+    height: 1.8em;
+    /* Altura ajustada para 60% de 3em */
+    width: 1.8em;
+    /* Largura ajustada para 60% de 3em */
+    opacity: 1;
+    transform: translate(0.6em, 0.6em) rotate(15deg);
+    /* Ajustado proporcionalmente */
+    transform-origin: 50% 50%;
+    transition: opacity 150ms, transform 500ms cubic-bezier(.26, 2, .46, .71);
   }
 
-  .node--source {
-    fill: #7e26d0;
+  .toggle-checkbox:checked~.toggle-slot .sun-icon-wrapper {
+    opacity: 0;
+    transform: translate(0.9em, 0.6em) rotate(0deg);
+    /* Ajustado proporcionalmente */
   }
 
-  .link--source,
-  .link--target {
-    stroke-opacity: 1;
-    stroke-width: 2px;
+  .moon-icon {
+    position: absolute;
+    height: 1.8em;
+    /* Altura ajustada para 60% de 3em */
+    width: 1.8em;
+    /* Largura ajustada para 60% de 3em */
+    color: white;
   }
+
+  .moon-icon-wrapper {
+    position: absolute;
+    height: 1.8em;
+    /* Altura ajustada para 60% de 3em */
+    width: 1.8em;
+    /* Largura ajustada para 60% de 3em */
+    opacity: 0;
+    transform: translate(3.05em, 0.6em) rotate(0deg);
+    /* Ajustado proporcionalmente */
+    transform-origin: 50% -50%;
+    transition: opacity 150ms, transform 500ms cubic-bezier(.26, 2.5, .46, .71);
+  }
+
+  .toggle-checkbox:checked~.toggle-slot .moon-icon-wrapper {
+    opacity: 1;
+    transform: translate(3.05em, 0.6em) rotate(-15deg);
+    /* Ajustado proporcionalmente */
+  }
+
+  .toggle-checkbox:checked+.toggle-label:before {
+    transform: translateX(26px);
+    /* Posição quando ativado */
+  }
+
+  */
 </style>
 
 <body>
   <div class="container mt-5">
-    <h1 class="text-center">Podfile.lock Dependency Tree</h1>
+    <div class="d-flex justify-content-between">
+      <h1 class="text-center">Podfile.lock Dependency Tree</h1>
+      <label>
+        <input class='toggle-checkbox' type='checkbox' id="toggleDarkMode"></input>
+        <div class='toggle-slot'>
+          <div class='sun-icon-wrapper'>
+            <div class="iconify sun-icon" data-icon="feather-sun" data-inline="false"></div>
+          </div>
+          <div class='toggle-button'></div>
+          <div class='moon-icon-wrapper'>
+            <div class="iconify moon-icon" data-icon="feather-moon" data-inline="false"></div>
+          </div>
+        </div>
+      </label>
+
+    </div>
     <form id="podfileForm">
       <div class="form-group">
         <label for="podfileInput">Enter Podfile.lock Content:</label>
-        <textarea class="form-control" id="podfileInput" rows="5" placeholder="Paste your Podfile.lock content here"></textarea>
+        <textarea class="form-control" id="podfileInput" rows="5"
+          placeholder="Paste your Podfile.lock content here"></textarea>
       </div>
       <button type="button" class="btn btn-primary" id="submitBtn">Submit</button>
     </form>
@@ -74,11 +160,11 @@
 
       <div class="row mt-2 m-2">
         <div class="d-flex mr-2">
-          <label for="import" class="mr-2"><b>Import</b></label>
+          <label for="import" class="mr-2">Import</label>
           <div id="import" style="background-color: #e9c837; width:20px; height:20px; border-radius:4px"></div>
         </div>
         <div class="d-flex">
-          <label for="imported" class="mr-2"><b>Imported by</b></label>
+          <label for="imported" class="mr-2">Imported by</label>
           <div id="imported" style="background-color: #7e26d0; width:20px; height:20px; border-radius:4px"></div>
         </div>
 
@@ -86,20 +172,17 @@
           <div id="graph"></div>
         </div>
       </div>
-
-
     </div>
   </div>
-
 
   <script src="https://cdn.jsdelivr.net/npm/pdfkit@0.10.0/js/pdfkit.standalone.js"></script>
   <script src="https://bundle.run/blob-stream@0.1.3"></script>
   <script src="https://cdn.jsdelivr.net/npm/svg-to-pdfkit@0.1.8/source.js"></script>
-
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
   <script src="parsePodfile.js"></script>
   <script src="generateGraph.js"></script>
 
@@ -109,7 +192,6 @@
       var jsons = parsePodfile(podfileContent);
 
       var containerWidth = document.getElementById('podfileForm').offsetWidth * 0.8;
-      console.log(containerWidth)
       generateGraph(jsons, containerWidth);
 
       graphContainer = document.getElementById('graphContainer');
@@ -123,10 +205,15 @@
       var downloadAnchorNode = document.createElement('a');
       downloadAnchorNode.setAttribute("href", dataStr);
       downloadAnchorNode.setAttribute("download", "podfile.json");
-      document.body.appendChild(downloadAnchorNode); // required for firefox
+      document.body.appendChild(downloadAnchorNode);
       downloadAnchorNode.click();
       downloadAnchorNode.remove();
     }
+
+    document.getElementById('toggleDarkMode').addEventListener('change', function () {
+      document.body.classList.toggle('dark-mode');
+      document.getElementById('podfileInput').classList.toggle('dark-mode');
+    });
   </script>
 </body>
 
