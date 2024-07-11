@@ -21,16 +21,11 @@
   .toggle-slot {
     position: relative;
     height: 3.2em;
-    /* Altura ajustada para 3em */
     width: 6.2em;
-    /* Largura ajustada proporcionalmente */
     border: 0.5px solid #e4e7ec;
-    /* Ajustado proporcionalmente */
     border-radius: 5.4em;
-    /* Ajustado proporcionalmente */
     background-color: white;
     box-shadow: 0px 1px 2.5px #e4e7ec;
-    /* Ajustado proporcionalmente */
     transition: background-color 250ms;
   }
 
@@ -40,46 +35,34 @@
 
   .toggle-button {
     transform: translate(3.55em, 0.55em);
-    /* Ajustado proporcionalmente */
     position: absolute;
     height: 1.95em;
-    /* Altura ajustada para 40% de 3em */
     width: 1.95em;
-    /* Largura ajustada para 40% de 3em */
     border-radius: 50%;
-    /* Ajustado proporcionalmente */
     background-color: #ffeccf;
     box-shadow: inset 0px 0px 0px 0.2em #ffbb52;
-    /* Ajustado proporcionalmente */
     transition: background-color 250ms, border-color 250ms, transform 500ms cubic-bezier(.26, 2, .46, .71);
   }
 
   .toggle-checkbox:checked~.toggle-slot .toggle-button {
     background-color: #485367;
     box-shadow: inset 0px 0px 0px 0.2em white;
-    /* Ajustado proporcionalmente */
     transform: translate(0.45em, 0.45em);
-    /* Ajustado proporcionalmente */
   }
 
   .sun-icon {
     position: absolute;
     height: 1.8em;
-    /* Altura ajustada para 60% de 3em */
     width: 1.8em;
-    /* Largura ajustada para 60% de 3em */
     color: #ffbb52;
   }
 
   .sun-icon-wrapper {
     position: absolute;
     height: 1.8em;
-    /* Altura ajustada para 60% de 3em */
     width: 1.8em;
-    /* Largura ajustada para 60% de 3em */
     opacity: 1;
     transform: translate(0.6em, 0.6em) rotate(15deg);
-    /* Ajustado proporcionalmente */
     transform-origin: 50% 50%;
     transition: opacity 150ms, transform 500ms cubic-bezier(.26, 2, .46, .71);
   }
@@ -87,27 +70,21 @@
   .toggle-checkbox:checked~.toggle-slot .sun-icon-wrapper {
     opacity: 0;
     transform: translate(0.9em, 0.6em) rotate(0deg);
-    /* Ajustado proporcionalmente */
   }
 
   .moon-icon {
     position: absolute;
     height: 1.8em;
-    /* Altura ajustada para 60% de 3em */
     width: 1.8em;
-    /* Largura ajustada para 60% de 3em */
     color: white;
   }
 
   .moon-icon-wrapper {
     position: absolute;
     height: 1.8em;
-    /* Altura ajustada para 60% de 3em */
     width: 1.8em;
-    /* Largura ajustada para 60% de 3em */
     opacity: 0;
     transform: translate(3.05em, 0.6em) rotate(0deg);
-    /* Ajustado proporcionalmente */
     transform-origin: 50% -50%;
     transition: opacity 150ms, transform 500ms cubic-bezier(.26, 2.5, .46, .71);
   }
@@ -115,12 +92,10 @@
   .toggle-checkbox:checked~.toggle-slot .moon-icon-wrapper {
     opacity: 1;
     transform: translate(3.05em, 0.6em) rotate(-15deg);
-    /* Ajustado proporcionalmente */
   }
 
   .toggle-checkbox:checked+.toggle-label:before {
     transform: translateX(26px);
-    /* Posição quando ativado */
   }
 
   */
