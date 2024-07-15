@@ -21,7 +21,7 @@ This project is a dependency tree viewer based on the content of the Podfile.loc
 ## How to Use
 
 1. **Clone the Repository:**
-git clone https://github.com/your-username/repository-name.git
+git clone https://github.com/MaatheusGois/profile-analyzer
 
 markdown
 Copy code
